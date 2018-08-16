@@ -1,5 +1,3 @@
-import uuid
-
 from django.conf import settings
 from django.db import models
 from django.db.models import signals
@@ -52,7 +50,6 @@ class Message(models.Model):
     """
     A private message from user to user
     """
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4(), editable=False)
     subject = models.CharField(_("Subject"), max_length=140)
     body = models.TextField(_("Body"))
     sender = models.ForeignKey(AUTH_USER_MODEL, related_name='sent_messages', verbose_name=_("Sender"), null=True,
